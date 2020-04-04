@@ -1,3 +1,4 @@
+import { EditCourseComponent } from './edit-course/edit-course.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -8,7 +9,10 @@ import { AppComponent } from "./app.component";
 import { MatComponentsModule } from './mat-components.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    EditCourseComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

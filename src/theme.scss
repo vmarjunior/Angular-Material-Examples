@@ -1,0 +1,52 @@
+@import "~@angular/material/_theming";
+
+@include mat-core();
+
+//Define a custom theme
+$app-primary: mat-palette($mat-green, 800);
+$app-accent: mat-palette($mat-red, 900);
+$app-warn: mat-palette($mat-yellow);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
+
+//Define custom typography
+$app-typography: mat-typography-config(
+  $font-family: '"Open Sans", "Helvetica Neue", sans-serif',
+  $headline: mat-typography-level(35px, 32px, 700),
+  $subheading-2: mat-typography-level(28px, 28px, 700),
+  $subheading-1: mat-typography-level(22px, 22px, 700),
+  $body-1: mat-typography-level(14px, 14px, 500),
+  $body-2: mat-typography-level(14px, 14px, 500)
+);
+
+@include angular-material-typography($app-typography);
+
+$color: rgb(103, 103, 180);
+$secondaryColor: rgb(168, 158, 236);
+
+h1 {
+  color: $color;
+}
+
+h2 {
+  color: $color;
+}
+
+h3,
+h4 {
+  color: $secondaryColor;
+}
+
+@mixin soft-border($border-radius) {
+  border: 1px solic #ccc;
+  border-radius: border-radius;
+  padding: 10px;
+}
+
+.box {
+  @include soft-border(5px);
+}
+
+.modern-box {
+  @include soft-border(10px);
+}
