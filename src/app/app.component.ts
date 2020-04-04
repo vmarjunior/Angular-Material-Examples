@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Observable, timer  } from 'rxjs';
 
 @Component({
   selector: "app-root",
@@ -30,6 +31,7 @@ export class AppComponent {
 
   progress = 0;
   timer;
+  isLoading = false;
 
   constructor() {
     this.timer = setInterval(() => {
@@ -39,6 +41,10 @@ export class AppComponent {
       clearInterval(this.timer);
     }, 20);
 
+    this.isLoading = true;
+    this.getCourses().subscribe(
+      x => this.isLoading = false
+    );
   }
 
   selectCategory(category){
@@ -48,6 +54,11 @@ export class AppComponent {
     .forEach(c => c.selected = false);
 
     category.selected = !category.selected;
+  }
+
+  getCourses(){
+    //simulating a data service
+    return timer(4000)
   }
 
 
