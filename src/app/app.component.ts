@@ -1,5 +1,7 @@
+import { EditCourseComponent } from './edit-course/edit-course.component';
 import { Component } from "@angular/core";
 import { Observable, timer  } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: "app-root",
@@ -7,6 +9,7 @@ import { Observable, timer  } from 'rxjs';
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+
   title = "material-demo";
   defaultGender = true;
   genders = [
@@ -33,7 +36,7 @@ export class AppComponent {
   timer;
   isLoading = false;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.timer = setInterval(() => {
       this.progress++;
 
@@ -61,5 +64,15 @@ export class AppComponent {
     return timer(4000)
   }
 
+  openDialog(){
+    this.dialog.open(EditCourseComponent, {
+      data: {
+        courseId: 1
+      }
+    })
+      .afterClosed().subscribe((result) => {
+        alert('You clicked: ' + result);
+      });
+  }
 
 }
